@@ -2,6 +2,55 @@
 
 A modern web application that provides AI-powered code reviews for multiple programming languages. The frontend is built with React, TypeScript, Vite, and Tailwind CSS.
 
+## Architecture
+
+```mermaid
+graph TD
+    A[User Interface] -->|1. Submit Code| B[React Frontend]
+    B -->|2. Send API Request| C[Backend API]
+    C -->|3. Process Code| D[AI Model]
+    D -->|4. Generate Feedback| C
+    C -->|5. Return Analysis| B
+    B -->|6. Display Results| A
+
+    subgraph Frontend
+        B --> E[Code Input Component]
+        B --> F[Language Detection]
+        B --> G[Feedback Display]
+    end
+
+    subgraph Backend
+        C --> H[Request Handler]
+        C --> I[Code Processor]
+        C --> J[Response Formatter]
+    end
+
+    style A fill:#e1f5fe,stroke:#01579b
+    style B fill:#e8f5e9,stroke:#2e7d32
+    style C fill:#fff3e0,stroke:#e65100
+    style D fill:#fce4ec,stroke:#c2185b
+```
+
+### Key Components
+
+1. **Frontend (React + TypeScript)**
+   - Code input with syntax highlighting
+   - Real-time language detection
+   - Responsive feedback display
+   - Error handling and loading states
+
+2. **Backend API**
+   - RESTful API endpoints
+   - Request validation
+   - Integration with AI services
+   - Response formatting
+
+3. **AI Processing**
+   - Code analysis
+   - Security vulnerability detection
+   - Best practices suggestions
+   - Performance optimization tips
+
 ## 🌟 Features
 
 - **Multi-language Support**: Detects and reviews code in various programming languages including:
