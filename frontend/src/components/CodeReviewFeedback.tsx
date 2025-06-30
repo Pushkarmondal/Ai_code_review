@@ -116,7 +116,7 @@ const CodeReviewFeedback: React.FC<CodeReviewFeedbackProps> = ({ feedback, loadi
 
     // Extract code blocks first and auto-detect language
     const codeBlocks: CodeBlock[] = [];
-    cleanedText = cleanedText.replace(/```(\w+)?\n([\s\S]*?)```/g, (match, lang, code) => {
+    cleanedText = cleanedText.replace(/```(\w+)?\n([\s\S]*?)```/g, ( lang, code) => {
       const blockIndex = codeBlocks.length;
       const detectedLanguage = lang ? lang.toLowerCase() : DetectLanguage(code.trim());
       codeBlocks.push({
