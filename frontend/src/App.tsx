@@ -54,35 +54,30 @@ function App() {
           <p className="text-gray-600">Get instant feedback on your code quality and security</p>
         </header>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-          <div className="bg-white/70 backdrop-blur-lg border border-gray-200 rounded-2xl shadow-lg p-6 hover:shadow-xl transition">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-start">
+          {/* Left Card - Code Input */}
+          <div className="bg-white/70 backdrop-blur-lg border border-gray-200 rounded-2xl shadow-lg p-6 transition hover:shadow-xl h-[600px] overflow-y-auto">
             <h2 className="text-xl font-semibold mb-4 text-gray-800">Your Code</h2>
             <form onSubmit={handleSubmit}>
               <div className="mb-4">
                 <label htmlFor="code" className="block text-sm font-medium text-gray-700 mb-1">
                   Code to Review
                 </label>
-                <div className="relative">
-                  <pre className="bg-gray-900 text-gray-100 p-4 rounded-md overflow-x-auto text-sm">
-                    <code>
-                      <textarea
-                        id="code"
-                        value={code}
-                        onChange={(e) => setCode(e.target.value)}
-                        className="w-full h-96 bg-transparent text-gray-100 font-mono focus:outline-none resize-none"
-                        placeholder="Paste your code here..."
-                        spellCheck="false"
-                      />
-                    </code>
-                  </pre>
+                <div className="h-80 rounded-md border border-gray-300 bg-gray-900">
+                  <textarea
+                    id="code"
+                    value={code}
+                    onChange={(e) => setCode(e.target.value)}
+                    className="w-full h-full p-4 bg-gray-900 text-gray-100 font-mono focus:outline-none resize-none overflow-y-auto"
+                    placeholder="Paste your code here..."
+                    spellCheck="false"
+                  />
                 </div>
 
                 {code.trim() && (
                   <p className="text-sm text-gray-500 mt-2 italic">
                     Detected Language:{' '}
-                    <span className="font-semibold text-blue-600">
-                      {DetectLanguage(code)}
-                    </span>
+                    <span className="font-semibold text-blue-600">{DetectLanguage(code)}</span>
                   </p>
                 )}
               </div>
@@ -101,7 +96,8 @@ function App() {
             </form>
           </div>
 
-          <div className="bg-white rounded-xl shadow-md p-6">
+          {/* Right Card - Code Review */}
+          <div className="bg-white rounded-xl shadow-md p-6 w-full">
             <h2 className="text-xl font-semibold mb-4 text-gray-800">Code Review</h2>
             <CodeReviewFeedback feedback={feedback} loading={loading} />
           </div>
